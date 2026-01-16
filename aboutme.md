@@ -1,7 +1,7 @@
 ---
 layout: page
-title: About me
-subtitle: Why you'd want to go on a date with me
+title: Joshua D Habiger
+subtitle: Professor, Department of Statistics, Oklahoma State University 
 ---
 
 My name is Inigo Montoya. I have the following qualities:
