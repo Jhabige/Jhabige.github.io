@@ -13,4 +13,4 @@ I graduated from high school in 1999 and went to Kansas State University.  I did
 I'm a sports fan! I love playing tennis (or any racket sport) and discgolf, and watch a lot of college basketball and football. I like to hack at the guitar, sing loudly and poorly, and play piano. 
 
 ## Family
-I also fell in love with my wife in my second year of graduate school. We have a wonderful 10 year old son.  I have a cat named Marvin - and we have some other pets.   
+I also fell in love with my wife in my second year of graduate school. We have a wonderful 10 year old son.  I have a snuggly cat named Marvin and some other pets.   
