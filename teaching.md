@@ -4,7 +4,7 @@ title: Teaching
 subtitle: 
 ---
 
-I've taught a wide range of courses ranging from freshman level introductory courses to PhD theory courses for Statistics majors to topics courses for statistics majors and other majors. 
+I've taught a variety of courses over the last 20 years, ranging from freshman level introductory courses to PhD theory courses for Statistics majors to topics courses for graduate students across the  majors.  I enjoy incorporating student research and my own research with collaborators into the curriculum whenever possible.  I particularly enjoy student research presentations, where statistics and non-statistics majors apply methods to their own data and learn from one another.   
 
 ## Current Teaching at OSU
 
