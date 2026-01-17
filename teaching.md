@@ -14,6 +14,8 @@ subtitle:
 
 * **Advanced Probability Theory STAT 6113.**  This a measure theoretic treatment of probablity theory for PhD students in Statistics or Mathematics. Topics include the construction of a probability measure, expectation operator, inequalities in statistics, modes of convergence, Martingales and other topics in stochastic processes.
 
+* **Elements of Statistics STAT 2013.** This is an introductory level online course for undergraduate social science majors.  It covers descriptive statistics and statistical inference for one and two samples.  
+
 ## Past Teaching
 
 * Engineering Statistics
