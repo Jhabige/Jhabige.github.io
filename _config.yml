@@ -21,6 +21,12 @@ author: Joshua D Habiger
 
 navbar-links:
   About Me: "aboutme"
+  Research: "research"
+  Teaching: "teaching"
+  Service: "service"
+  Resources: "resources"
+  CV: "cv"
+  Contact: "contact"
   Resources:
     - Beautiful Jekyll: "https://beautifuljekyll.com"
     - Learn markdown: "https://www.markdowntutorial.com/"
