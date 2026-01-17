@@ -4,7 +4,7 @@ title: Joshua D Habiger
 subtitle: Professor, Department of Statistics, Oklahoma State University 
 ---
 
-My name is Inigo Montoya. I have the following qualities:
+I am a professor in the Department of Statistics at Oklahoma State.  I hope you enjoy learning more about me and my research, teaching, and professional service experiences.  
 
 - I rock a great mustache
 - I'm extremely loyal to my family
