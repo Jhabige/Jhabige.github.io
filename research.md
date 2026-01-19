@@ -24,8 +24,11 @@ A fairly standard variable selection procedure identified 81 bacteria as associa
 2. Computing some statistical summary for each null hypothesis such as a classical p-value or bayesian posterior null probability (typically called the local FDR)
 3. Decide which variables can be ``discovered'' under the constraint that the FDR is controlled
 
-Curious researchers and students are encouraged to go through the R tutorial.   
+Curious researchers and students are encouraged to go through the R tutorial and consider the following questions.  Please do reach out if you have any ideas, questions, thoughts.
+
 Q1: How did your choices at in each step affect the final list of discoveries?
-Q2: Are you confident in the validity (FDR controL), efficiency and interpretability of your results?   
+
+Q2: Are you confident in the validity (FDR controL), efficiency and interpretability of your results?
+
 Q3: Can you adapt methology for more complex data sets?  
 
