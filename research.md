@@ -6,12 +6,11 @@ subtitle:
 I enjoy developing new statistical theory and methods the analysis of high dimensional (HD) data, count data and their intersection. I'm particularly interested in variable selection methods for false discovery rate (FDR) control with HD count data, 
 which often arise the omics and imaging.  For complete lists of publications see below.  
 
-### Full lists at ###
-| [Experts Directory](https://experts.okstate.edu/jhabige/publications)|
-| [google scholar](https://scholar.google.com/citations?user=4UOAsNMAAAAJ&hl=en)|
-| [My CV]()|
+### Full lists of publications at ###
+| [Experts Directory](https://experts.okstate.edu/jhabige/publications) | [google scholar](https://scholar.google.com/citations?user=4UOAsNMAAAAJ&hl=en)
+| [My CV](/assets/img/profile.jpg)
 
-## Recent Presentations
+## Selected Recent Presentations
 
 ## Motivating the FDR 101 tutorial and my research
 
