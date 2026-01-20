@@ -21,7 +21,9 @@ In [Anderson and Habiger (2012)](https://journals.asm.org/doi/10.1128/aem.07466-
 3. Decide on a rejection threshold for the summaries in 2. so that the FDR control is provided
 
 ### Questions to Consider
-I invite you to go through an analysis of this data in the FDR 101 tutorial.  As you do, consider the following questions (many without answers!) 
+I invite you to go through an analysis of this data in the FDR 101 tutorial.  As you do, consider the following questions (many without answers!). Typically how you answer one question impacts how you answer the next question.  
+
+Q0: First decide on an overall objective.  Is your go to discover as many associations as possible subject to FDR control?  This is the usual presumed objective.   
 
 Q1: In step 1. What is the statistical (implicitly or explicity) a statistical model and null hypotheses.  How did your model and hypothesis choices affect summary statistics and hence the final list of discoveries?
 
