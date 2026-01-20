@@ -10,9 +10,9 @@ An real example and some motivating questions below will help you get familiar w
 ## FDR 101 and Motivating Questions
 
 ### Motivating Data and Analysis
-In [Anderson and Habiger (2012)](https://journals.asm.org/doi/10.1128/aem.07466-11) high throughput sequencing technology measured the abundance of 778 bacteria livining in 5 wheat plant rhizosphere soil samples.
-These data are high dimensional because 778 variables were measured on just 5 samples. The variable selection problem arose because the goal was to determine which of the bacterial abundances were associated with the shoot biomass of the samples
-A fairly standard variable selection procedure identified 81 bacteria as associated with productivity, with the interpretation that we may expect 5% of discoveries to be false discoveries (under some assumptions).  The procedure 1. computed a conditional exact test p-value for each bacteria and applied the adaptive BH procedure in [Storey (2002)](https://rss.onlinelibrary.wiley.com/doi/full/10.1111/1467-9868.00346) to determine which p-values were small enough to warrant "discovery".
+In [Anderson and Habiger (2012)](https://journals.asm.org/doi/10.1128/aem.07466-11) high throughput sequencing technology measured the abundance of 778 bacteria in 5 wheat plant rhizosphere soil samples.
+These data are high dimensional because p = 778 variables were measured on just n = 5 samples. A multiple hypothesis testing procedure is needed to determine which of the 778 bacteria are associated with the shoot biomass of the samples.
+A fairly standard FDR method identified 81 bacteria as associated with productivity, with the interpretation that we may expect 5% of discoveries to be false discoveries (under some assumptions).  The procedure 1. computed a conditional exact test p-value for each bacteria and 2. applied the adaptive BH procedure in [Storey (2002)](https://rss.onlinelibrary.wiley.com/doi/full/10.1111/1467-9868.00346) to determine which p-values were small enough to warrant "discovery".
 
 ### General Approach for HD multiple testing with FDR control 
 
