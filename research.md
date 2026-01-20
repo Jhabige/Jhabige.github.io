@@ -5,9 +5,9 @@ subtitle:
 ---
 ## Overview of Recent Methods Research Interests
 
-I enjoy developing new statistical theory and methods the analysis of high dimensional (HD) data and count data. I'm particularly interested in multiple hypothesis testing methods for [false discovery rate (FDR) control](https://rss.onlinelibrary.wiley.com/doi/10.1111/j.2517-6161.1995.tb02031.x) with HD count data.  Such data often arise in the omics when high throughput sequencing technology is used to measure the abundance of thousands of genes, attributes, variables, etc. across several samples. Whenever the goal is to determine which variables are associated with covariate(s) or treatments, FDR methods are needed to ensure that the expected proportion of false discoveries among discoveries - the FDR - is controlled.  
+I enjoy developing new statistical theory and methods the analysis of high dimensional (HD) data.  These data routinely arise when high throughput sequencing technology, like imaging or sequencing technology, is used to measure thousands of variables across a relatively small number of samples.  Whenever the goal is to determine which variables are associated with covariate(s) or treatments, multiple hypothesis testing methods are needed to ensure that the expected proportion of false discoveries among discoveries - i.e. the [false discovery rate or FDR](https://rss.onlinelibrary.wiley.com/doi/10.1111/j.2517-6161.1995.tb02031.x) - is controlled at a reasonable level.   I'm particularly interested in HD multiple testing with count data.  This setting is particularly challenging because data often are zero inflated, overdispersed, heterogeneous across varaibles and samples, and lead to p-value statistics with discrete distributions.  I'm also recently interested in replicability analysis, where the goal is to make inference about replication likelihoods using data that may be subject to selection bias (ex. we may only observe some data if p<.05).  
 
-A variety of challenges arise with count data that make this problem particularly interesting, like zero inflation, overdispersion, heterogeneity, and discrete p-value distributions.  I'm also recently interested in replicability analysis and the impact of selection bias on downstream FDR estimation.  A real example and some motivating questions below will help you get familiar with my research. Recent presentations and full lists of my publications follow.  
+Below is an example of an FDR analysis with a collaborator in Plant and Soil sciences at Oklahoma State University, along with some questions that motivate my research in HD multiple hypothesis testing with count data.  Some recent presentations are below too - thanks to recent PhD students Huizi Wang, Emmanuel Asare, Tianyu Cao and David Watts, who did a lot of the heavy lifting on them!   
 
 ## An Example, FDR 101 and Motivating Questions
 
@@ -21,7 +21,7 @@ In [Anderson and Habiger (2012)](https://journals.asm.org/doi/10.1128/aem.07466-
 3. Decide on a rejection threshold for the summaries in 2. such that the FDR controll is provided
 
 ### Questions to Consider
-As you go through the tutorial, keep these questions in mind:
+These types of questions motivate my FDR research:
 
 Q1: In step 1. you specified (implicitly or explicity) a statistical model and null hypotheses.  How did your model and hypothesis choices affect summary statistics and hence the final list of discoveries?
 
