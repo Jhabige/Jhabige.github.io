@@ -14,8 +14,8 @@ In [Anderson and Habiger (2012)](https://journals.asm.org/doi/10.1128/aem.07466-
 These data are high dimensional because 778 variables were measured on just 5 samples. The variable selection problem arose because the goal was to determine which of the bacterial abundances were associated with the shoot biomass of the samples
 A fairly standard variable selection procedure identified 81 bacteria as associated with productivity, with the interpretation that we may expect 5% of discoveries to be false discoveries (under some assumptions).  The procedure 1. computed a conditional exact test p-value for each bacteria and applied the adaptive BH procedure [Storey 2002](https://rss.onlinelibrary.wiley.com/doi/full/10.1111/1467-9868.00346) to determine which p-values were small enough to warrant "discovery".
 
-### General Approach for HD multiple testing 
-**More generally, an HD multiple testing procedure for False Discovery Rate (FDR) control operates by** 
+### General Approach for HD multiple testing with FDR control 
+
 1. Specifying statistical model(s) and null hypotheses of interest
 2. Computing some statistical summary for each null hypothesis such as a classical p-value or bayesian posterior null probability (typically called the local FDR)
 3. Decide on a rejection threshold for the summaries that yields (approximate or exact) FDR controll
@@ -33,11 +33,11 @@ Q4: Are you confident in the validity (FDR controL) and efficiency and interpret
 
 Q5: Can you adapt methology for more complex data sets and nuanced objectives?  
 
-### Selected Recent Presentations
+## Selected Recent Presentations
 * [Statistical Methods for HD Count](/assets/Statistical_Methods_for_HD_Count_Data_Habiger2025.pdf)
 * [Publication Policies for Replicable Research](/assets/Publication_Policies_Presentation.pdf)
 
-### Full lists of publications at ###
+## Lists of publications ###
 | [Experts Directory](https://experts.okstate.edu/jhabige/publications) | [google scholar](https://scholar.google.com/citations?user=4UOAsNMAAAAJ&hl=en)
 | [My CV](/assets/CV2025.pdf)
 
