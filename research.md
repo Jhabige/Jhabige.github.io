@@ -3,22 +3,22 @@ layout: page
 title: Research
 subtitle: 
 ---
-I enjoy developing new statistical theory and methods the analysis of high dimensional (HD) data and count data. I'm particularly interested in HD multiple hypothesis testing methods for false discovery rate (FDR) control with HD count data.  Such data often arise in the omics and imaging because high throughput sequencing technology allows for thousands of variables to be measured (or counted) for each experimental unit. Inference calls for multiple hypothesis testing with FDR control when the goal is to determine which among thousands or millions of the variables are associated with covariate(s) or treatments, but we'd like to safeguard against a high rate of false discoveries. I'm recently interested in replicability analysis and the impact of selection bias on downstream FDR estimation.  
+I enjoy developing new statistical theory and methods the analysis of high dimensional (HD) data and count data. I'm particularly interested in multiple hypothesis testing methods for [false discovery rate (FDR) control](https://rss.onlinelibrary.wiley.com/doi/10.1111/j.2517-6161.1995.tb02031.x) with HD count data.  Such data often arise in the omics when high throughput sequencing technology measures the abundance of thousands of genes, attributes, variables, etc. for a single biological sample. The goal is often to determine which variables are associated with covariate(s) or treatments, and we'd like to safeguard against a high rate of false positives. I'm recently interested in replicability analysis and the impact of selection bias on downstream FDR estimation.  
 
-You can acccess complete lists of my publications below.  I encourage you to review some selected presentation slides and go through the FDR 101 tutorial with R to really get to know my research.  
+An real example and some motivating questions below will help you get familiar with my research. Recent presentations and full lists of my publications follow.  
 
-## FDR 101 Illustration and Motivation
+## FDR 101 and Motivating Questions
 
-### Motivating Data
+### Motivating Data and Analysis
 In [Anderson and Habiger (2012)](https://journals.asm.org/doi/10.1128/aem.07466-11) high throughput sequencing technology measured the abundance of 778 bacteria livining in 5 wheat plant rhizosphere soil samples.
 These data are high dimensional because 778 variables were measured on just 5 samples. The variable selection problem arose because the goal was to determine which of the bacterial abundances were associated with the shoot biomass of the samples
-A fairly standard variable selection procedure identified 81 bacteria as associated with productivity, with the interpretation that we may expect 5% of discoveries to be false discoveries (under some assumptions).  The procedure 1. computed a conditional exact test p-value for each bacteria and applied the adaptive BH procedure [Storey 2002](https://rss.onlinelibrary.wiley.com/doi/full/10.1111/1467-9868.00346) to determine which p-values were small enough to warrant "discovery".
+A fairly standard variable selection procedure identified 81 bacteria as associated with productivity, with the interpretation that we may expect 5% of discoveries to be false discoveries (under some assumptions).  The procedure 1. computed a conditional exact test p-value for each bacteria and applied the adaptive BH procedure in [Storey (2002)](https://rss.onlinelibrary.wiley.com/doi/full/10.1111/1467-9868.00346) to determine which p-values were small enough to warrant "discovery".
 
 ### General Approach for HD multiple testing with FDR control 
 
-1. Specifying statistical model(s) and null hypotheses of interest
-2. Computing some statistical summary for each null hypothesis such as a classical p-value or bayesian posterior null probability (typically called the local FDR)
-3. Decide on a rejection threshold for the summaries that yields (approximate or exact) FDR controll
+1. Specify statistical model(s) and null hypotheses of interest
+2. Computing some statistical summary for each null hypothesis such, as a p-value or bayesian posterior null probability (typically called the local FDR in the literature)
+3. Decide on a rejection threshold for the summaries in 2. such that the FDR controll is provided
 
 ### Questions to Consider
 As you go through the tutorial, keep these questions in mind:
