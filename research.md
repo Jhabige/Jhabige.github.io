@@ -34,8 +34,8 @@ Q4: Are you confident in the validity (FDR controL) and efficiency and interpret
 Q5: Can you adapt methology for more complex data sets and nuanced objectives?  
 
 ### Selected Recent Presentations
-* [Statistical Methods for HD Count](/assets/Statistical_Methods_for_HD_Count_Data_OCSBDS2025.pdf)
-* [Publication Policies for Replicable Research](/assets/Publication_Policies_Presentation.pdf)
+* [Statistical Methods for HD Count](https://github.com/Jhabige/Jhabige.github.io/blob/master/assets/Statistical_Methods_for_HD_Count_Data_Habiger2025.pdf)
+* [Publication Policies for Replicable Research](https://github.com/Jhabige/Jhabige.github.io/blob/master/assets/Publication_Policies_Presentation.pdf)
 
 ### Full lists of publications at ###
 | [Experts Directory](https://experts.okstate.edu/jhabige/publications) | [google scholar](https://scholar.google.com/citations?user=4UOAsNMAAAAJ&hl=en)
