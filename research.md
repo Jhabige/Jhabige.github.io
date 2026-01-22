@@ -34,17 +34,15 @@ The tutorial will walk you through two basic analyses.  As you read, I encourage
 
 ### Questions to Consider Throughout
 
-Q0: Is the goal to discover as many associations as possible subject to FDR control?    
+Q1: Is the goal to discover as many associations as possible subject to FDR control?    
 
-Q1: In step 1. . . What were the statistical models (implicitly or explicity).  Are the models reasonable? 
+Q2: In step 1 . . . What were the statistical models (implicitly or explicity).  Are the models reasonable? 
 
-Q2: In step 1. . . What are the null hypotheses of interest?  Are they reasonable?  
+Q3: In step 1 . . . What are the null hypotheses of interest?  Are they reasonable? 
 
-Q3: In step 1. . . Column and row total are heterogeneous.  Does this matter? 
+Q4: In step 1 . . . Column and row total are heterogeneous.  Does this matter? 
 
-Q4: In step 2. . . which summary statistics were computed for each hypothesis.  How did this decision affect the final list of discoveries or rejected nulls?
-
-Q5: In step 3. . . you decided on a procedure for computing a rejection threshold.  How did this choice affect the final list of discoveries?
+Q5: In step 2 . . . which summary statistics were computed for each hypothesis.  How did this decision affect the final list of discoveries or rejected nulls?
 
 Q6: Are you confident in the validity (FDR controL), efficiency and interpretability of your results?  What assumptions were made that may not be reasonable?
 
