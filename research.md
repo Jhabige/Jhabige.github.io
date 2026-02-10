@@ -10,7 +10,7 @@ High thoughput technology is now routinely used to generate high dimenionsal (HD
 You can find full lists of my publications, and some presentations based on recent research with students and other collaborators. You'll also find a tutorial that will walk you though the two basic approaches for high dimensional multiple null hypotheses - the highly cited [BH procedure](https://academic.oup.com/jrsssb/article/57/1/289/7035855) for false discovery rate control with p-values and an empirical bayes analogue that uses posterior null probability estimates, also sometimes called local false discovery rates.  Please understand these analyses are by no means rigorous, sound or complete.  The goal is to help curious potential researchers get a feel for the area, and to ask important questions (many without answers!). 
 
 ### Selected Recent Presentations
-[False Discovery Rate Adjustment Methods with R: An Application to Wheat Microbiome Data](/assets/FDR101.html)
+[Tutorial: False Discovery Rate Adjustment Methods with R with an Application to Wheat Microbiome Data](/assets/FDR101.html)
 
 [Statistical Methods for HD Count Data](/assets/Statistical_Methods_for_HD_Count_Data_Habiger2025.pdf) 
 
@@ -21,35 +21,6 @@ You can find full lists of my publications, and some presentations based on rece
 | [My CV](/assets/CV2025.pdf)
 
 ### Keywords
-false discovery rate; multiple testing; selective inference; categorical data analysis; high dimensional data analysis; missing data methods; computational statistics; omics applications
-
-# An Example, FDR 101 and Motivating Questions
-
-### Motivating Data and Analysis
-In [Anderson and Habiger (2012)](https://journals.asm.org/doi/10.1128/aem.07466-11) high throughput sequencing technology measured the abundance of 778 bacteria in 5 wheat rhizosphere soil samples. One goal was to determine which bacterial abundances were associated with wheat productivity, which was measure as the average shoot biomass in each sample. The procedure employed amounted to 1. computing a conditional exact test p-value for each bacteria and 2. applying the adaptive [BH procedure](https://academic.oup.com/jrsssb/article/57/1/289/7035855) from [Storey (2002)](https://rss.onlinelibrary.wiley.com/doi/full/10.1111/1467-9868.00346) to determine which p-values were small enough to warrant "discovery".  The result: 81 bacteria were discovered as associated with productivity. The Empirical Bayes, i.e. local FDR, analogue analysis is in [Habiger, Watts and Anderson (2017)](https://academic.oup.com/biometrics/article-abstract/73/2/562/7537689?redirectedFrom=fulltext). 
-
-The tutorial will walk you through two basic analyses.  As you read, I encourage you to keep the following questions in mind. Many do not have an answer!  
-
-### General Approach for Large Scale Multiple Hypothesis Testing
-
-1. Specify statistical model(s) and null hypotheses of interest
-2. Computing some statistical summary for each null hypothesis such, as a p-value or posterior null probability
-3. Decide on a rejection threshold for the summaries in 2. so that the FDR control is provided
-
-### Questions to Consider Throughout
-
-Q1: Is the goal to discover as many associations as possible subject to FDR control?    
-
-Q2: In step 1 . . . What were the statistical models (implicitly or explicity).  Are the models reasonable? 
-
-Q3: In step 1 . . . What are the null hypotheses of interest?  Are they reasonable? 
-
-Q4: In step 1 . . . Column and row total are heterogeneous.  Does this matter? 
-
-Q5: In step 2 . . . which summary statistics were computed for each hypothesis.  How did this decision affect the final list of discoveries or rejected nulls?
-
-Q6: Are you confident in the validity (FDR controL), efficiency and interpretability of your results?  What assumptions were made that may not be reasonable?
-
-Q7: Can you adapt methology for more complex data sets, more complicated null hypotheses and more nuanced objectives?  
+False Discovery Rate; Multiple Hypothesis Testing; Selective Inference; Categorical Data Analysis; High Dimensional Data Analysis; Missing Data Methods; Computational Statistics; Applications in Omics
 
 
