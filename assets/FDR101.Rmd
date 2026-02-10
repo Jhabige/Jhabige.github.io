@@ -1,0 +1,584 @@
+---
+title: "PCA and FDR Adjustment Methods in Wheat Microbiome Data Analysis with R"
+author: "Habiger"
+date: "`r Sys.Date()`"
+output:
+  ioslides_presentation: default
+  beamer_presentation: default
+---
+<style type="text/css">
+body { /* Normal text font size */
+  font-size: 10pt;
+}
+li {
+  font-size: 20px; /* Change to your desired size (e.g., 12px, 0.9em) */
+}
+code.r { /* R code blocks font size */
+  font-size: 14px;
+}
+pre { /* Code block output and general 'preformatted' spacing/size */
+  font-size: 12px;
+  margin-top: 10px;    /* Space above the code block */
+  margin-bottom: 10px; /* Space below the code block */
+  line-height: 1;    /* Line spacing within the block */
+}
+th {
+    font-size: 4px; /* Adjust the font size as needed */
+  }
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Motivation
+
+[Characterization and Identification of Productivity-Associated Rhizobacteria in Wheat, Anderson and Habiger, *Applied and Environmental Microbiology* (2012)](https://journals.asm.org/doi/10.1128/aem.07466-11)
+
+From the Abstract: "The rhizosphere is populated by a numerous and diverse array of rhizobacteria, and many impact productivity in largely unknown ways... **Operational taxonomic units (OTUs) that were significantly associated with biomass productivity were _identified using an exact test adjusted for the false-discovery rate_**..."
+
+# Part 1: Getting to know the data
+## Importing and Checking
+```{r Importing and checking, echo=TRUE}
+bacteria=read.table("bacteria.txt", row.names=1)
+biomass<-c(0.86, 1.34,1.81,2.37,3.0)
+colnames(bacteria)= biomass
+bacteria[1:5,]
+dim(bacteria)
+```
+
+- 778 Bacterial abundances measure per sample
+
+- N = 5 samples
+
+- Biomass measured for each sample
+
+## Initial Boxplot: Skewed Right Data
+
+```{r boxplots, fig.height=3.5, echo=TRUE}
+boxplot(bacteria)
+```
+
+
+## Logged Data Boxplot: Better
+
+```{r logged boxplots, fig.height=3.5, echo=TRUE}
+l.bacteria=log(bacteria+1)
+boxplot(l.bacteria)
+```
+
+
+## Biplot: Digging Deeper
+```{r Biplot Logged Data, fig.height=3.5, echo=TRUE}
+biplot(princomp(l.bacteria), scale=0, ylim = c(-3,4), xlim = c(-3,10))
+```
+
+- Bacteria 508 (top left) vs 43 (bottom right).  What do these locations mean? 
+
+- What are the arrows?  
+
+## Biplot Deets: Abundance and Association Components
+```{r Biplot Loadings, fig.height=3.5, echo=TRUE}
+round(princomp(l.bacteria)$loadings[,1:2],2)
+```
+- **Points**: For each bacteria plug in its z score for X1, z score for X2, ... 
+
+  - Z1 = .50 X1 + .43 X2 + .47 X3 + .46 X4 + .37 X5
+  
+    - Interpretation: Z1 large -> abundant
+
+  - Z2 = .85 X1 - .09 X2 -.28 X3 -.39 X4 - .19 X5
+  
+    - Interpretation: Z2 large (small)  -> negative (positive) association 
+    
+    <br>
+    
+- **Arrows**: Plots of loadings above.
+
+## Biomass vs Abundace for 4 Bacteria 
+
+```{r biomass v abundance, echo = TRUE, fig.height=3}
+interesting=c("508","277","42","43")
+matplot(biomass,t(l.bacteria[interesting,]), pch = 1:4,col=1:4,type="b",ylab="log abundance")
+legend("topright",pch=1:4, col=1:4,legend=interesting)
+```
+
+- Recall biplot:  Z1 large for 42, 43 and Z1<0 for 508 
+
+- Recall biplot: Z2 > 0 for 508, 277, 42 and Z2<0 for 43
+
+
+## Assessing Biplot with a Scree Plot
+
+```{r Variance Explained by Components, fig.height=3.5, echo=TRUE}
+plot(princomp(l.bacteria), main = "Variance of PC's")
+```
+
+- Comp.1(Z1): **Total abundance variation** 
+
+- Comp.2(Z2): **Productivity associated variation** 
+
+## Question: Standardize?
+
+#### PCA Objective: Retain as much variation as possible with as few variables (Z1, Z2 say) as possible. 
+<br>
+
+
+
+#### Typically PCA is ran after centering and scale **variables** <br><br>
+
+  - Often interested in correlation not covariance <br>
+  
+  - Especially when units of measure differ across variables <br>
+
+#### Here we ran PCA on logged **samples**  <br><br>
+
+  - Are data on the "same scale" across samples? <br>
+  
+  - If yes, scaling wont' affect PCA <br>
+
+
+
+
+## Before Scaling
+
+```{r boxplot before, fig.height=4, echo=TRUE}
+boxplot(l.bacteria)
+```
+
+## After Scaling
+
+```{r boxplot after, fig.height=4, echo=TRUE}
+sl.bacteria = scale(l.bacteria)
+boxplot(sl.bacteria)
+```
+
+
+## Before scaling
+```{r loading before, fig.height=4, echo=TRUE}
+round(princomp(l.bacteria)$loadings[,1:2],2)
+```
+
+## After Scaling
+```{r loading after, fig.height=4, echo=TRUE}
+round(princomp(sl.bacteria)$loadings[,1:2],2)
+```
+
+## Before Scaling
+```{r biplot before scale, fig.height=5, echo=TRUE}
+biplot(princomp(l.bacteria), scale=0)
+```
+
+## After Scaling
+```{r biplot after, fig.height=5, echo=TRUE}
+biplot(princomp(sl.bacteria), scale = 0)
+```
+
+
+## Before Scaling
+```{r biomass v abundance before, echo = TRUE, fig.height=5}
+matplot(biomass,t(l.bacteria[interesting,]), pch = 1:4,col=1:4,type="b",ylab="stand log abundance")
+legend("topright",pch=1:4, col=1:4,legend=interesting)
+```
+
+## After Scaling
+```{r biomass v abundance after, echo = TRUE, fig.height=5}
+matplot(biomass,t(sl.bacteria[interesting,]), pch = 1:4,col=1:4,type="b",ylab="stand log abundance")
+legend("topright",pch=1:4, col=1:4,legend=interesting)
+```
+
+
+# Part 2: FDR-adjusted discoveries
+
+## Generic Procedure for FDR control
+
+The False Discovery Rate (FDR) is
+$$FDR = E\left[\frac{\# \text{ False Discoveries}}{\#\text{ Discoveries} }\right]$$
+
+1. Specify statistical model and null hypotheses $H_1, H_2,..., H_M$
+
+2. Compute p-values $p_1,p_2,..,p_M$ or posterior null probabilities $q_1,q_2,...,q_M$ 
+
+3. Use statistics above to estimate FDR or "adjust" for FDR
+
+  - [B-H estimate](https://rss.onlinelibrary.wiley.com/doi/10.1111/j.2517-6161.1995.tb02031.x): $\widehat{FDR}(p_{(k)}) = \frac{M p_{(k)}}{k}$ <br> 
+  
+  - [Empirical Bayes estimate](https://www.tandfonline.com/doi/abs/10.1198/016214507000000545): $\widehat{FDR}(q_{(k)}) = \frac{1}{k}\sum_{i=1}^k q_{(i)}$ 
+
+## Example: BH procedure
+
+```{r, echo = TRUE}
+pvalues=rep(NULL, 778)
+lfc=rep(NULL, 778)
+bacteria = as.matrix(bacteria)
+for(i in 1:778){
+  #1. Specify model
+  model=summary(glm(bacteria[i,]~biomass, family="poisson"))
+  #2. Compute p-values (and LFC while we're at it)
+  pvalues[i]=model$coefficient[2,4]
+  lfc[i]=model$coefficient[2,1]
+}
+```
+
+- Warnings are ignorable for now  
+
+## Example: BH continued.
+
+```{r, echo = TRUE, fig.width=6.5, fig.height=3.5}
+# 3. Estimate FDR and return TRUE if < .05
+discoveries = p.adjust(pvalues, method = "BH")<.05
+sum(discoveries)
+plot(pvalues, p.adjust(pvalues, method="BH"), ylab="FDR", xlim = c(0,.05),ylim=c(0,.5), col= as.numeric(discoveries)+1)
+abline(h = 0.05,v=.05, lwd =c(5,1), col = c(2,1))
+legend("topleft", inset=.05, col=2, pch=1, legend = "Discovery")
+```
+
+## Q: Why not p < .05? 
+
+- Q: How many discoveries would be made?
+```{r, echo = TRUE}
+NumDiscoveries = sum(pvalues<.05)
+NumDiscoveries
+```
+
+- Q: How many false discoveries would be anticipated?
+```{r, echo = TRUE}
+NumFalseDiscoveries = 778*.05
+NumFalseDiscoveries
+```
+
+- Q: What is the FDR of this procedure? Is it acceptable?
+```{r, echo = TRUE}
+38.9/135
+```
+
+
+
+## Before FDR adjustment
+```{r, fig.width=8, echo=TRUE}
+biplot(princomp(l.bacteria[,]),scale=0)
+```
+
+
+
+## After FDR adjustment
+
+```{r, echo = TRUE, fig.width=8}
+biplot(princomp(l.bacteria[discoveries,]), scale =0)
+```
+
+
+## Example: Empirical Bayes Procedure
+
+```{r, echo = TRUE}
+#1. Priors pi, beta estimated in Habiger, Watts, Anderson (2017)
+pi = c(.69,.16,.15)
+beta=c(0,-1.13,.78)
+
+#2 Compute posterior: 
+p.0=exp(beta[1]*biomass)/sum(exp(beta[1]*biomass))
+p.l=exp(beta[2]*biomass)/sum(exp(beta[2]*biomass))
+p.u=exp(beta[3]*biomass)/sum(exp(beta[3]*biomass))
+q<-function(y){ pi[1]*dmultinom(y,prob=p.0)/
+ (pi[1]*dmultinom(y,prob=p.0) + pi[2]*dmultinom(y,prob=p.l)+pi[3]*dmultinom(y, prob=p.u))}
+qs=rep(NULL, 778)
+for(i in 1:778){qs[i]=q(bacteria[i,])}
+```
+
+- Notable differences in steps 1 and 2
+
+    - Specified pi and beta values
+    
+    - Had to use Bayes theorem to compute $q$ manually -  not using glm()
+
+## Example: Emp. Bayes Procedure cont.
+
+```{r, echo=TRUE,fig.width=6.5, fig.height=3}
+#3 EBdiscoveries are ones with FDR<.05
+s.q=sort(qs)
+FDR=cumsum(s.q)/1:778
+k=sum(FDR<=.05)
+EBdiscoveries=qs<=s.q[k]
+sum(EBdiscoveries)
+
+plot(s.q, FDR, xlab="Post. Null", ylab = "FDR", xlim = c(0,.3), ylim = c(0, .1), col=I(FDR<.05)+1)
+abline(h = 0.05, lwd =5, col = 2)
+legend("topleft", inset=.05, col=2, pch=1, legend = "Discovery")
+```
+
+
+## Results: BH FDR Adjustment
+```{r, fig.width=8, echo=TRUE}
+biplot(princomp(l.bacteria[discoveries,]),xlim = c(-3,8),ylim = c(-4, 4),scale=0)
+```
+
+## Results: EB FDR Adjustment
+```{r, fig.width=8, echo=TRUE}
+biplot(princomp(l.bacteria[EBdiscoveries,]),xlim = c(-3,8),ylim = c(-4, 4), scale=0)
+```
+
+## BH vs. Emp. Bayes FDR adjustment 
+
+```{r, echo= TRUE}
+plot(lfc,p.adjust(pvalues, method="BH"), xlim = c(-3,3), xlab = "log fold change", ylab=expression(hat(FDR)))
+abline(h=0.05, lwd =3) 
+#index=sort(qs, index=TRUE)[[2]]
+#points(lfc[index], FDR,pch=2, col=2)
+legend("topright",legend=c("BH","Emp Bayes"), pch = c(1,2), col = c(1,2))
+```
+
+## BH vs. Emp. Bayes FDR adjustment 
+```{r, echo= TRUE}
+plot(lfc,p.adjust(pvalues, method="BH"), xlim = c(-3,3), xlab = "log fold change", ylab=expression(hat(FDR)))
+abline(h=0.05, lwd =3) 
+index=sort(qs, index=TRUE)[[2]]
+points(lfc[index], FDR,pch=2, col=2)
+legend("topright",legend=c("BH","Emp Bayes"), pch = c(1,2), col = c(1,2))
+```
+
+# Part 3: FDR Methods Research
+
+## P-value FDR Methods Questions
+
+- Properties: BH procedure controls the FDR **If P-values are valid** and positively correlated.  
+
+- FDR methods research asks questions in each step of the analysis. 
+
+- Step 1. We specified Poisson model and null hypothesis $H_i: LFC_i = 0$ (the log fold change in abundance per biomass gram for bacteria $i$) 
+
+  - Over-dispersion: Try adding "family = quasipoisson" to glm(), or using nb.glm() or chisq.test()? Do you get the same results? Why? 
+  
+  - Zero inflation: What about all of the zeros in the data and "zero inflation"
+    
+  - Normalization: Try glm(bacteria[i,]~biomass + s,..) where $s$ is column total (or proportion).  Based on PCA, what do you think?
+  
+  - What is overfitting and why does it matter above?
+    
+  - Hypothesis of Interest: $H_i:LFC_i = 0$ or $H_i:LFC_i\approx 0$?
+    
+## P-value FDR Methods Questions
+
+- Properties: BH procedure controls the FDR **If P-values are valid** and positively correlated.  
+
+- FDR methods research asks questions in each step of the analysis. 
+
+
+- Step 2. Compute $Z_i = \widehat{LFC}_i/SE_i$ and $P_i=\Pr_0(|Z_i|\geq |z_i|)$
+
+  - P-values are valid only if we use the **correct distribution** on the previous slide. Which distribution is correct in the previous slide?
+
+  - Why would standard errors (and hence p-values) tend to be very small for abundant bacteria? 
+  
+  - Who cares?  What does this have to do with the Hypothesis of Interest $LFC_i\approx 0$ and "negligible effects"? 
+
+## P-value FDR Methods Questions
+
+```{r, echo=FALSE, fig.align='center', fig.width=5,fig.cap='Statistics Show Fred is Associated with Productivity'}
+knitr::include_graphics("cartoon.jpg")
+```
+
+
+
+
+## P-value FDR Methods Questions
+
+- Properties: BH procedure controls the FDR ''**If P-values are valid**`` and positively correlated.  
+
+- FDR methods research asks questions in each step of the analysis. 
+
+- Step 3. Compute $FDR(p) = \frac{M p}{(\# p_i\leq p)}$
+
+    - The numerator estimates # False Discoveries as M $p$.  Is that conservative? 
+  
+    - Can we use $SE_i$ in weighted p-value procedures? 
+  
+## Empirical Bayes FDR Questions
+- Properties: Empirical Bayes procedures **should** (asymptotically) control the  and [make more discoveries than p-value methods counterparts](https://www.tandfonline.com/doi/abs/10.1198/016214507000000545)
+
+- Step 1. Assumed multinomial distribution and tested $H_i:LFC_i=0$ with
+
+    - $LFC_i$ = 0 with probability 0.69
+    - $LFC_i$ = -1.13 with probability 0.16, or  
+    - $LFC_i$ = .78 with probability 0.15
+
+- Prior estimation: Why MLE's in Habiger, Watts, Anderson? Other estimators?
+  
+- Over-dispersion: What other priors could we consider? Gamma prior? 
+    
+- Normalization: Try adding column totals or proportions to ``beta[k] biomass''      
+- Hypothesis of Interest: Is $H_i:LFC_i = 0$ or $H_i:LFC_i\approx 0$ tested?
+
+
+## Empirical Bayes FDR Questions
+- Properties: Empirical Bayes procedures **should** (asymptotically) control the  and [make more discoveries than p-value methods counterparts](https://www.tandfonline.com/doi/abs/10.1198/016214507000000545)
+
+- Step 2. Compute **posterior null probability** $q_i = \Pr(LFC_i=0|\text{Bacteria}_i)$
+
+    - Posterior Nulls are valid if a) model is flexible enough b) priors estimated parameters well.  Is it? Are they? Are they valid "if and only if" or just "if"? 
+
+    - Does $q_i$ change if $H_i:LFC_i\approx 0$ vs $H_i:LFC_i = 0$?   
+
+    - What if too many / too few possible values for $LFC_i$ are allowed? What happens to $q_i$?    
+
+## Empirical Bayes FDR Questions
+- Properties: Empirical Bayes procedures **should** (asymptotically) control the  and [make more discoveries than p-value methods counterparts](https://www.tandfonline.com/doi/abs/10.1198/016214507000000545)
+
+- Step 3. Estimate $FDR(q_{(r)}) = \bar{q}$ 
+
+  - We could prove that **ANY DISCOVERY RULE** with $\bar{q}\leq \alpha$ controls FDR!  
+
+  - Which bacteria would you want to discover?
+  
+    - Maybe large $\widehat{LFC}_i$?   
+    
+    - Maybe large productivity associated variation?
+    
+    - Maybe some clusters of bacteria? 
+    
+    - Can you think of some merit critera for ranking bacteria?
+  
+  - Is "Selective Inference" a problem here? What is that anyway?
+  
+
+## Empirical Bayes vs Classical FDR
+
+Why is the [Benjamini and Hochber (1995) procedure](https://rss.onlinelibrary.wiley.com/doi/10.1111/j.2517-6161.1995.tb02031.x) one of the most [highly cited statistics papers of all time](https://www.youtube.com/watch?v=ZGU4SlE9Pu8)? 
+
+  - Try changing ``sum(p.adjust(pvalues, method = "BH")<.05)`` to 
+  ``sum(pvalues <.05/length(pvalues))`` - That used to be our only option.    
+
+  - We can get usually get a p-value for quite complex models  
+  
+  - Don't have to presume some prior and estimate it 
+
+When to use an Empirical Bayes Procedure?
+
+  - You know how to specify and estimate the prior well 
+  
+  - Want more flexible in discovery rules 
+
+# Current Student Research
+
+## Emmanuel Asare (PhD 2025)
+Multiple Testing Procedures for Count Data Based on the Local False Discovery Rate: R Package [PMLfdr](https://github.com/ekaasare/PMLfdr/) 
+
+|      | Deseq2, EdgeR | PMLfdr |
+| :--- | :--- | :-- |
+|Approach              | P-value         |Empirical Bayes|          
+|Overdispersion        | YES- Neg. Binom  |YES - + formula available| 
+|Proof of Optimality & Validity  | NO     | YES - Asymptotic|           
+|Fred                |  NO   |YES - "Hypothesis of interest"  | 
+|Over/Under Fitting | YES - shrinkage |Yes - flexible, well studied
+
+## Other Current Student "omics" FDR Research 
+
+Prof. Rudra and Mehedi Hassan (PhD 2028): Empricial Bayes Approach for FDR
+
+  - Poisson mixture vs. Multinomial mixture?
+  
+  - Affect of normalization methods in above?
+  
+  - Include other covariates in model?
+  
+  - Zero inflation for above?
+
+Victor Abadom (MS 2026): 
+
+  - When will $\text{log}(Y+1) \sim N(\mu,\sigma^2)$ work well vs. $Y\sim$ Negative Binomial, quasi-Poisson, etc.?
+  
+  - Zero Inflation for above? 
+
+## More Questions for ??? 
+- Rhizosphere-Mediated Effects on Winter Wheat Yield in Oklahoma and the Development of Diagnostic Probes targeting beneficial microorganisms, Ramos-Lopez, Espindola, et. al. (2026+)  
+
+- Model: Bact. Abundance $\sim$ LFC $\times f(\text{Phenotype}_1,..., \text{Phenotype}_5)$
+    
+    - $f()$ returns Low or High productivity
+    
+    - 12 trt groups: Soil x Variety x Feek Stage and 3 sampling depths
+
+- Question: Which bacteria differentially expressed in $2$ + groups, $3$ + groups,  ...
+
+- Challenges:  
+    - Everything we just talked about AND 
+    - [Replicability Analysis](https://projecteuclid.org/journals/statistical-science/volume-38/issue-4/Replicability-Across-Multiple-Studies/10.1214/23-STS892.pdf) only somewhat developed for $p$-values.  Largely undeveloped for Empirical Bayes with count data
+    - How to define $f()$?
+  
+
+
+## Huizi Wang (PhD 2026)
+**_Efficient Classification Methods for Sparse High-Dimensional Count Data with Model Selection as Motivated by Microbe Finder_**
+
+$$\text{logit}(\Pr(\text{Pathogen})) = \beta_1 EP_1 + \beta_2 EP_2 + ... +\beta_{1000} EP_{1000}$$
+
+- Competing Methods: 
+  - Logistic Regression with LASSO penalty 
+  - Quadratic Discriminant Analysis on total = EP1 +...+EP1000 for overfitting
+
+- Huizi's Method and Contributions
+  - Add dummy variables to above equation to allow for zero inflation 
+  - Simple (closed form) estimates under zero inflated over disp model
+  - "soft thresholding" (like LASSO) to shrink estimates and select Eprobe
+  - Better prediction power (AUROC) than either method! Surprising!  
+
+## Chase Cao (PhD 2024)
+The Backstory
+
+1. Ioannidis: [Why Most Published Research Findings are False](
+https://doi.org/10.1371/journal.pmed.0020124) - sciencewide FDR!
+
+2. ASA (ish) [statement on p-values](https://doi.org/10.1080/00031305.2016.1154108) blames $p$-value misuses for crisis.
+
+3. Benjamini clarifies that its [Selective inference: The Silent Killer of Replicability](https://hdsr.mitpress.mit.edu/pub/l39rpgyc/release/3)
+
+Working **Selective Inference** Model for Science: 
+
+  1. All "data" in some population  
+  2. **Selection mechanism** say $\delta = [P<.05]$ -> observable data 
+  3. Inference on health of scientific ecosystem with selected data
+
+Question: Is $\delta$ really that simple? What if we're wrong? 
+
+  - Chase et al. ``Sensitivity Analysis for FDR Estimation Under Misspecified Selection Model'' 
+
+  
+# About Me
+
+## Teaching
+
+- Courses I regularly teach
+    - R Programming STAT 5191 or STAT 5193
+    - Statistical Machine Learning with R STAT 5063
+    - **Computational Statistics STAT 5093 (need some MS level Math STAT)**
+    - Advanced Probability Theory STAT 6113 
+
+- Recommended Analytics sequence for non-stat majors
+    - R Programming STAT 5191 (or SAS and R - STAT 5193) - maybe skip
+    - Applied Regression Analysis STAT 5543
+    - Statistical Machine Learning with R STAT 5063 
+
+- Recommended Experimental Data Analysis sequence for non-stat majors
+    - SAS programming (or SAS and R - STAT 5193) - mabye skip
+    - Statistics for Experimenters I STAT 5013 - maybe skip
+    - Statistics for Experimenters II STAT 5023
+
+## Research Interests
+
+  - High Dimensional Data
+  - False Discovery Rate
+  - Missing Data
+  - Categorical and Discrete Data
+  - Replicability and Meta Analysis
+  - Applications in omics
+
+## Personal Interests
+
+  - Basketball
+  - Football
+  - Tennis
+  - Disc Golf 
+  - Guitar and Piano  
+  - Video Games
+  - Reading
+  - My family Max and Kate 
+  - One of our Cats: Marvin
