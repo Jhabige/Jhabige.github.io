@@ -11,7 +11,7 @@ You can find full lists of my publications, and some presentations based on rece
 
 ### Selected Recent Presentations
 [Tutorial: FDR Adjustment Methods for a Wheat Microbiome Data Analysis with R](/assets/FDR101.html)
-- Please also do not assume that the R code in these slides should be used for the analysis of your "omics" data.  As you'll see, there are a lot of challenges that warrant very careful consideration!  Please do feel free to reach out if you have any questions, answers or ideas!  I'm all ears!
+- Please also do not assume that the R code in this tutorial is suitable the analysis of your "omics" data.  As you'll see, there are a lot of challenges and options along the way that warrant very careful consideration!  Please do feel free to reach out if you have any questions, answers or ideas!  I'm all ears!
 
 [Statistical Methods for HD Count Data](/assets/Statistical_Methods_for_HD_Count_Data_Habiger2025.pdf) 
 
