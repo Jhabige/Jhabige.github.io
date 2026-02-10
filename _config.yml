@@ -24,12 +24,12 @@ navbar-links:
   Teaching: "teaching"
   Service: "service"
   Resources: "resources"
-  CV: "cv"
-  Contact: "contact"
-  Resources:
-    - Beautiful Jekyll: "https://beautifuljekyll.com"
-    - Learn markdown: "https://www.markdowntutorial.com/"
-  Author's home: "https://deanattali.com"
+  CV: "assets/CV2025.pdf"
+  #Contact: "contact"
+  #Resources:
+  #  - Beautiful Jekyll: "https://beautifuljekyll.com"
+  #  - Learn markdown: "https://www.markdowntutorial.com/"
+  #Author's home: "https://deanattali.com"
 
 ################
 # --- Logo --- #
