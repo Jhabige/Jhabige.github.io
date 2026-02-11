@@ -3,9 +3,7 @@ layout: page
 title: Pictures
 subtitle: 
 ---
-
-I've taught a variety of courses over the last 20 years, ranging from freshman level introductory courses to PhD theory courses for Statistics majors to topics courses for graduate students across the  majors.  I enjoy incorporating student research and research with collaborators into the curriculum whenever possible.  I particularly enjoy final projects, where students from a variety of backgrounds apply what they've learned and share their findings with the class. 
-
+[Chase](/assets/img/chase.jpg)
 ## Current Teaching at OSU
 
 * **Statistical Machine Learning with R STAT 4463 / 5063.** This is an applied statistical learning course for statistics majors and graduate students in other quantitative areas that have some statistics background - ideally an applied regression analysis course that uses R. We cover most topics in the popular book [*Applied Statistical Learning with Application in R*](statlearning.com) by Gareth, Witten, Hastie and Tibshirani.  Supervised learning methods are: review of multiple linear and logistic regression models, k nearest neighbors, disciminant functions, penalized regression methods such as LASSO and ridge regression, principle component regression and partial least squares, other nonlinear methods such as local regression, natural splines, tree based methods and generalized additive models.  Unsupervised methods include principle component analysis and cluster analysis.   Modell selection topics/methods include information measures like AIC, BIC, bias-variance tradeoff, overfitting, prediction error, cross validation and bootstrapping.   Upon completion of the course, students will be able to assess, compare, and apply modern machine learning methods to learn from their data.     
