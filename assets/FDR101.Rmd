@@ -56,22 +56,27 @@ Other things
 - Basketball, Football, Tennis, Discgolf, Music
 
 ## About My Research
-- Early False Discovery Rate Methods Research: Developed Generic FDR methods that (in theory), could facility structured, noisy, difficult-to-model, data.  
-    - ... LIKE "Omics" data!
-    - ... LIKE "Imaging data"
-    - ... LIKE selected (say P<.05) and replicated data
+- My early False Discovery Rate research: Developed generic FDR methods that (in theory), could facility structured, noisy, difficult-to-model data.  
 
-- My Angle: 
-    - Worked on problem from both classical (more easily automated) and empirical Bayes (more flexible) angles 
+    - Omics data, Imaging data, Selected (say P<.05) data, Replication data
 
-- FDR research demands over next 5 - 10?
-    - automated AND flexible to easily move upstream
+- My current methods FDR research angle:
 
+    - Great collaborators with complicated data sets expose obvious critical needs
+    - Great training and great students
+    
+- General FDR research plans over next 5 - 10?
+    
+    - Consider the ["Garden of Forking Paths"](https://sites.stat.columbia.edu/gelman/research/unpublished/p_hacking.pdf) that leads to discovery
+    
+    - Methods that are in line with researchers needs and go further upstream (downstream methods = information loss)
+    
+    
 ## Todays Objectivs
 
-- Demonstrate that FDR research is quite an ACCESSIBLE area!
+- Demonstrate that FDR research is an OPEN and ACCESSIBLE area!
 
-- Behind the Scenes
+- Behind the scenes in an FDR data analysis
 
 <img src="officespace.gif" alt="Office Space GIF" />
 
