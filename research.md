@@ -11,8 +11,8 @@ You can find full lists of my publications, and some presentations based on rece
 
 ### Selected Recent Presentations
 [Tutorial: FDR Adjustment Methods for a Wheat Microbiome Data Analysis with R](/assets/FDR101.html)
-- Please do use this tutorial to get familiar with HD multiple testing methods, my research, and open questions in the area.  Please also do reach out if you have any questions, concerns, or ideas.  I'm all ears. However, please do not assume the R code constitutes a sound and suitable analysis that is suitable for your "omics" data with a few minor code tweekings.  As you'll see, there are a lot of challenges and options along the way that warrant very careful consideration.
-  
+- Please do use this tutorial to get familiar with HD multiple testing methods, my research, and open questions in the area.  Please also do reach out if you have any questions, concerns, ideas or findings.  I'm all ears and would love to chat with you!  However, please do not assume the R code in these slides constitutes a sound analysis for your data.
+- -   
 [Statistical Methods for HD Count Data](/assets/Statistical_Methods_for_HD_Count_Data_Habiger2025.pdf) 
 
 [Publication Policies for Replicable Research](/assets/Publication_Policies_Presentation.pdf)
