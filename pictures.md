@@ -17,4 +17,7 @@ Huizi Wang (PhD 2026) presents her research at the Oklahoma Conference of Statis
 ![Amir Javid]({{ "/assets/img/Amir.jpg" | relative_url }})
 Amir Javid successfully defends his M.S. report December 16, 2022. From left to right Lan Zhu (committee member), Josh Habiger (advisor), Amir Javid (MS student), Ye Liang (committee member).  Josh Habiger also won the ugly christmas sweater competition.
 
+## Other Photos
 
+![Josh and Prat]({{ "/assets/img/JoshPrat.jpg" | relative_url }})
+Josh Habiger and Pratyaydipta Rudra at the Stillwater Tennis Association tournament in 2025.  Habiger and Rudra were the top doubles team among all doubles teams composed of at least 2 statisticians from the same Statistics Department in the State of Oklahoma.
