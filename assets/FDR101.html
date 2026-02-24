@@ -3651,7 +3651,7 @@ legend(&quot;topright&quot;,legend=c(&quot;Classical&quot;,&quot;Emp Bayes&quot;
 
 <ul>
 <li><p>Properties: BH procedure controls the FDR <strong>If P-values are valid</strong> and, say, positively correlated.</p></li>
-<li><p>Step 1. glm() function specified Poisson model and \(H_0:\)LFC\(_i=0\) (the log fold change per biomass gram for bacteria \(i\))</p></li>
+<li><p>Step 1. glm() function specified Poisson model and \(H_0:\) LFC\(_i=0\) (the log fold change per biomass gram for bacteria \(i\))</p></li>
 <li><p>What about models for…</p>
 
 <ul>
@@ -3659,7 +3659,7 @@ legend(&quot;topright&quot;,legend=c(&quot;Classical&quot;,&quot;Emp Bayes&quot;
 <li><p><strong>Zero-inflation</strong>: Recall lots of zeros for some bacteria</p></li>
 <li><p><strong>Normalization</strong>: Try glm(bacteria[i,]~biomass + colSums(bacteria),..). Do you get the same results? Why not median, etc.</p></li>
 </ul></li>
-<li><p>Why \(H_0:\)LFC\(_i = 0\) and why not \(H_0:\)LFC\(_i\approx 0\)?</p></li>
+<li><p>Why \(H_0:\) LFC\(_i = 0\) and why not \(H_0:\) LFC\(_i\approx 0\)?</p></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Classical FDR Research Questions</h2></hgroup><article  id="classical-fdr-research-questions-1">
@@ -3680,7 +3680,7 @@ legend(&quot;topright&quot;,legend=c(&quot;Classical&quot;,&quot;Emp Bayes&quot;
 <li><p>We can prove standard errors (and p-values) go to 0 as total abundance increases…<strong>EVEN IF LFC\(_i = 0.000001\)</strong> in reality!</p>
 
 <ul>
-<li><p>Do \(H_0:\)LFC\(_i\approx 0\) and \(H_0:\text{LFC}_i=0\) agree here?</p></li>
+<li><p>Do \(H_0:\) LFC\(_i\approx 0\) and \(H_0:\) LFC\(_i=0\) agree here?</p></li>
 <li><p>Who cares?</p></li>
 </ul></li>
 </ul>
@@ -3734,7 +3734,7 @@ Statistics Show Fred is Associated with Productivity!
 <li>Zero-inflation</li>
 <li>Over/under fitting and bias vs variance</li>
 </ul></li>
-<li><p>Is \(H_0:\)LFC\(_i = 0\) or \(H_i:\)LFC\(_i\approx 0\) tested in above considerations?</p></li>
+<li><p>Is \(H_0:\) LFC\(_i = 0\) or \(H_0:\) LFC\(_i\approx 0\) tested in above considerations?</p></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Empirical Bayes Research Questions</h2></hgroup><article  id="empirical-bayes-research-questions-1">
@@ -3747,12 +3747,12 @@ Statistics Show Fred is Associated with Productivity!
 <li><p>Over/under fitting, over-dispersion, zero-inflation</p></li>
 <li><p>Number of multinomials \(k\) &ldquo;tunes&rdquo; bias vs variance / over-under fitting</p></li>
 </ul></li>
-<li><p>Is \(q_i\) the same for \(H_0:\)LFC\(_i\approx 0\) vs \(H_0:\)LFC\(_i=0\)?</p>
+<li><p>Is \(q_i\) the same for \(H_0:\) LFC\(_i\approx 0\) vs \(H_0:\) LFC\(_i=0\)?</p>
 
 <ul>
 <li><p>Does number of multinomials (k=3, 5, 10,…) matter?</p></li>
 <li><p>Does &ldquo;\(\approx\)&rdquo; matter?</p></li>
-<li><p>Can Fred become ``significant’’?</p></li>
+<li><p>Can Fred become &ldquo;significant&rdquo; for some \(k\) and &ldquo;\(\approx\)&rdquo; definitions?</p></li>
 </ul></li>
 </ul>
 
@@ -3787,7 +3787,8 @@ Statistics Show Fred is Associated with Productivity!
 <li><p>When to use an Empirical Bayes methods?</p>
 
 <ul>
-<li>You know how to specify model and estimate prior model parameters well</li>
+<li>You know how to select a good model and null hypotheses</li>
+<li>You know how to estimate parameters well</li>
 </ul></li>
 </ul>
 
@@ -3818,7 +3819,7 @@ Statistics Show Fred is Associated with Productivity!
 <tr class="odd">
 <td align="left">Over/Under Fitting</td>
 <td align="left">YES</td>
-<td align="left">YES YES YES</td>
+<td align="left">Yes - Model Selection</td>
 </tr>
 <tr class="even">
 <td align="left">FDR Control/Efficiency</td>
