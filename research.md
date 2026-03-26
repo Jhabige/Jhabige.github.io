@@ -10,6 +10,8 @@ High thoughput technology is now routinely used to generate high dimenionsal (HD
 You can find full lists of my publications, and some presentations based on recent research with students and other collaborators below. The tutorial is a great way to get familiar with false discovery rate adjustment methods for HD count data and R software. I hope you enjoy!
 
 ### Selected Recent Presentations
+[Presentation for South Carolina 40th Anniversary Event](/assets/USCPresentation.pdf)
+
 [Tutorial: FDR Adjustment Methods for a Wheat Microbiome Data Analysis with R](/assets/FDR101.html)
 - Please do not assume the R code in these slides constitutes a sound analysis for your data.  Code is for educational purposes.
 
