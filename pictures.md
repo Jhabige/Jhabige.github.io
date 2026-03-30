@@ -20,7 +20,7 @@ Amir Javid successfully defends his M.S. report December 16, 2022. From left to 
 ## Other Photos
 ![40th Anniversary of Statistics Department USC]({{"/assets/img/USCConference.JPG" | relative_url }})
 <br>
-Edsel Pena, me, Alex McClain, Akim Akepdou, Laura Taylor (left to right) reunited at the University of South Carolina Statistics Department's 40th Anniversary Conference in 2026. We all studied under Dr. Pena together and are now professors at Oklahoma State University, University of South Carolina, Missouri University of Science and Technology and Elon University, respectively.  
+Edsel Pena, Josh Habiger, Alex McClain, Akim Akepdou, Laura Taylor (left to right) reunite at the University of South Carolina Statistics Department's 40th Anniversary Conference in 2026. We all studied under Dr. Pena together 15 + years ago, and are now professors at Oklahoma State University, University of South Carolina, Missouri University of Science and Technology and Elon University, respectively.  
 
 ![Josh and Prat]({{ "/assets/img/JoshPrat.JPG" | relative_url }}) 
 <br>
