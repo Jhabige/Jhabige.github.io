@@ -18,7 +18,7 @@ Huizi Wang (PhD 2026) presents her research at the Oklahoma Conference of Statis
 Amir Javid successfully defends his M.S. report December 16, 2022. From left to right Lan Zhu (committee member), Josh Habiger (advisor), Amir Javid (MS student), Ye Liang (committee member).  Josh Habiger also won the ugly christmas sweater competition.
 
 ## Other Photos
-![40th Anniversary of Statistics Department USC]({{"/assets/img/USCConference.jpg" | relative_url }})
+![40th Anniversary of Statistics Department USC]({{"/assets/img/USCConference.JPG" | relative_url }})
 <br>
 Edsel Pena, me, Alex McClain, Akim Akepdou, Laura Taylor (left to right) reunited at the University of South Carolina Statistics Department's 40th Anniversary Conference in 2026. We all studied under Dr. Pena together and are now professors at Oklahoma State University, University of South Carolina, Missouri University of Science and Technology and Elon University, respectively.  
 
