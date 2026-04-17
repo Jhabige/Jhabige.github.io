@@ -24,6 +24,6 @@ From left to right: Edsel Pena, Josh Habiger, Alex McClain, Akim Akepdou, Laura 
 
 ![Josh and Prat]({{ "/assets/img/JoshPrat.JPG" | relative_url }}) 
 <br>
-Josh Habiger and Pratyaydipta Rudra at the Stillwater Tennis Association tournament in 2025.  Habiger and Rudra were the top doubles team among all doubles teams composed of at least 2 statisticians from the same Statistics Department in the State of Oklahoma.
+Josh Habiger and Pratyaydipta Rudra at the Stillwater Tennis Association tournament in 2025.  Habiger and Rudra were the top doubles team among all doubles teams composed of at least 2 statisticians from the same Statistics Department in the State of Oklahoma....Also we did win the tournament. 
 
 
