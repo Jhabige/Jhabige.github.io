@@ -4,6 +4,7 @@ url="https://jhabige.github.io/assets/StudentDataBig.txt"
  ClassData =na.omit(ClassData)
  ClassData = droplevels(ClassData)
  ClassData$Introvert=as.numeric(ClassData$Introvert)
+ ClassData$Fbtime=as.numeric(ClassData$Fbtime)
 rm(url)
 
 url="https://jhabige.github.io/assets/hospital_labeled.csv"
